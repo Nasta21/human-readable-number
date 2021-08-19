@@ -1,13 +1,14 @@
- function toReadable (number) {
+module.exports = 
+function toReadable (number) {
     let result = '';
     let num = number.toString();
     let tens = '';
     let hundreds;
-    let i = num.length() - 1;
+    let i = num.length - 1;
     if (number === 0) {
         result = 'zero';
-}   else  if (num[i - 1] !== '1') {
-    switch (num[i]) {
+}   else  if (Number(num[i - 1]) !== '1') {
+    switch (Number(num[i])) {
         case '1':
             result = 'one'
             break;
@@ -42,7 +43,7 @@
     //end of ones, named result
     //start of tens
     
-    switch (num[i-1]) {
+    switch (Number(num[i-1])) {
         case '2':
             tens = 'twenty'
             break;
@@ -73,8 +74,8 @@
     }
     result = (result) ? `${tens} ${result}` : `${tens}`;//putting together ones and tens
 }
-   else if (num[i - 1] === '1') {//teens
-    switch (`${num[i-1]}${num[i]}`) {
+   else if (Number(num[i - 1]) === '1') {//teens
+    switch (Number(`${num[i-1]}${num[i]}`)) {
         case '10':
             result = 'ten'
             break;
@@ -108,7 +109,7 @@
     }
 }
 if (num.length === 3) {
-    switch (num[i-2]) {
+    switch (Number(num[i-2])) {
         case '1':
             hundreds = 'one hundred'
             break;
